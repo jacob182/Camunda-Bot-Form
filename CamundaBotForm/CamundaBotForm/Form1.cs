@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http;
+using System.Threading;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using System.IO;
@@ -54,6 +55,29 @@ namespace CamundaBotForm
             bool startProcess = StartProcessCheckBox.Checked;
             // if so, how many times?
             int timesStarted = Convert.ToInt32(Math.Round(TimesTxtBox.Value, 0));
+            int delayMs;
+            try
+            {
+                int inputNumber = Convert.ToInt32(Math.Round(DelayInterval.Value, 0));
+                if (inputNumber < 0)
+                {
+                    string message = "Delay interval must be a valid number (in milliseconds).";
+                    string caption = "Error While Starting Process";
+                    MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    delayMs = inputNumber;
+                }
+            }
+            catch (FormatException)
+            {
+                string message = "Delay interval must be a valid number (in milliseconds).";
+                string caption = "Error While Starting Process";
+                MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
 
             // * Setting the file name and file path for the purpose of saving the returned activities into a csv file *
@@ -80,6 +104,7 @@ namespace CamundaBotForm
                     for (int i = 0; i < timesStarted; i++)
                     {
                         await sequenceBot.StartProcess();
+                        Thread.Sleep(delayMs);
                     }
                 }
             }
@@ -175,6 +200,11 @@ namespace CamundaBotForm
         }
 
         private void TimesTxtBox_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -46,7 +46,11 @@
             this.SuccessLbl = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.DelayInterval = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TimesTxtBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayInterval)).BeginInit();
             this.SuspendLayout();
             // 
             // DefinitionIDTxtBox
@@ -143,7 +147,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(414, 217);
+            this.label1.Location = new System.Drawing.Point(414, 278);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 13);
             this.label1.TabIndex = 14;
@@ -164,7 +168,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(417, 233);
+            this.button1.Location = new System.Drawing.Point(418, 294);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(86, 23);
             this.button1.TabIndex = 16;
@@ -175,7 +179,7 @@
             // FilePathLbl
             // 
             this.FilePathLbl.AutoSize = true;
-            this.FilePathLbl.Location = new System.Drawing.Point(509, 238);
+            this.FilePathLbl.Location = new System.Drawing.Point(510, 299);
             this.FilePathLbl.MaximumSize = new System.Drawing.Size(154, 0);
             this.FilePathLbl.Name = "FilePathLbl";
             this.FilePathLbl.Size = new System.Drawing.Size(57, 13);
@@ -214,11 +218,45 @@
             this.label2.TabIndex = 20;
             this.label2.Text = "Camunda Testing Bot";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(415, 217);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(217, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Delay between starting each process";
+            // 
+            // DelayInterval
+            // 
+            this.DelayInterval.Location = new System.Drawing.Point(417, 234);
+            this.DelayInterval.Name = "DelayInterval";
+            this.DelayInterval.Size = new System.Drawing.Size(186, 20);
+            this.DelayInterval.TabIndex = 23;
+            this.DelayInterval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(609, 236);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 13);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "milliseconds";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 388);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.DelayInterval);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.SuccessLbl);
             this.Controls.Add(this.RunProgramBtn);
@@ -240,6 +278,7 @@
             this.Text = "Camunda Testing";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TimesTxtBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayInterval)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,6 +304,9 @@
         private System.Windows.Forms.Label SuccessLbl;
         private System.Windows.Forms.Label label2;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown DelayInterval;
+        private System.Windows.Forms.Label label7;
     }
 }
 
