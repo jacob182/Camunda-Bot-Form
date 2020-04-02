@@ -156,6 +156,11 @@
             // TimesTxtBox
             // 
             this.TimesTxtBox.Location = new System.Drawing.Point(417, 168);
+            this.TimesTxtBox.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.TimesTxtBox.Name = "TimesTxtBox";
             this.TimesTxtBox.Size = new System.Drawing.Size(246, 20);
             this.TimesTxtBox.TabIndex = 15;
@@ -231,6 +236,11 @@
             // DelayInterval
             // 
             this.DelayInterval.Location = new System.Drawing.Point(417, 234);
+            this.DelayInterval.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.DelayInterval.Name = "DelayInterval";
             this.DelayInterval.Size = new System.Drawing.Size(186, 20);
             this.DelayInterval.TabIndex = 23;
