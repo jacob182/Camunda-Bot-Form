@@ -94,7 +94,7 @@ namespace CamundaBotForm
 
             // Building the CamundaBot using the parameters above.
             CamundaBot sequenceBot = new CamundaBot(definitionKey, definitionID, json);
-            
+            List<string> responseList = new List<string>();
 
             // Starting the process the required amount of times
             try
@@ -103,7 +103,8 @@ namespace CamundaBotForm
                 {
                     for (int i = 0; i < timesStarted; i++)
                     {
-                        await sequenceBot.StartProcess();
+                        string response = await sequenceBot.StartProcess();
+                        responseList.Add(response);
                         Thread.Sleep(delayMs);
                     }
                 }

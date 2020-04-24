@@ -71,6 +71,7 @@ namespace CamundaBotForm
                 this.definitionKey = definitionKey;
                 this.json = json;
                 this.client = new HttpClient();
+                this.client.Timeout = TimeSpan.FromMinutes(30);
             }
 
 
@@ -112,10 +113,10 @@ namespace CamundaBotForm
                 }
                 Regex regex = new Regex("RestException");
                 Match match = regex.Match(result);
-            if (match.Success)
-            {
-                throw new RestException("No matching Process Definition matching the given key.");
-            }
+                if (match.Success)
+                {
+                    throw new RestException("No matching Process Definition matching the given key.");
+                }
             
 
                 return result;
