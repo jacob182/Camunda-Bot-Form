@@ -101,10 +101,12 @@ namespace CamundaBotForm
             {
                 if (startProcess)
                 {
+                    ProgressLbl.Visible = true;
                     for (int i = 0; i < timesStarted; i++)
                     {
-                        string response = await sequenceBot.StartProcess();
-                        responseList.Add(response);
+                        ProgressLbl.Text = "Starting Process: " + (i + 1);
+                        ProgressLbl.Refresh();
+                        await sequenceBot.StartProcess();
                         Thread.Sleep(delayMs);
                     }
                 }
@@ -137,6 +139,8 @@ namespace CamundaBotForm
             List<Activity> activities = null;
             try
             {
+                ProgressLbl.Text = "Retrieving Activity Data";
+                ProgressLbl.Refresh();
                 activities = await sequenceBot.GetActivities();
             }
             catch (HttpRequestException) // There was a problem connecting with the host.
@@ -168,6 +172,7 @@ namespace CamundaBotForm
                         {
                             try
                             {
+                                ProgressLbl.Text = "Saving Activity Data";
                                 csv.WriteRecords(activities);
                             }
                             catch (CsvHelper.WriterException)
@@ -196,7 +201,8 @@ namespace CamundaBotForm
                 return;
             }
 
-            // Displays success label
+            // Hides progress label and displays success label
+            ProgressLbl.Visible = false;
             SuccessLbl.Visible = true;
         }
 
@@ -208,6 +214,20 @@ namespace CamundaBotForm
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void JSONCbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (JSONLbl.Enabled == false)
+            {
+                JSONLbl.Enabled = true;
+                JSONTxtBox.Enabled = true;
+            }
+            else
+            {
+                JSONLbl.Enabled = false;
+                JSONTxtBox.Enabled = false;
+            }
         }
     }
 }
