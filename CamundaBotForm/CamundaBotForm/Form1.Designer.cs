@@ -57,10 +57,13 @@
             // 
             // DefinitionIDTxtBox
             // 
+            this.DefinitionIDTxtBox.ImeMode = System.Windows.Forms.ImeMode.On;
             this.DefinitionIDTxtBox.Location = new System.Drawing.Point(84, 93);
             this.DefinitionIDTxtBox.Name = "DefinitionIDTxtBox";
             this.DefinitionIDTxtBox.Size = new System.Drawing.Size(246, 20);
             this.DefinitionIDTxtBox.TabIndex = 0;
+            this.DefinitionIDTxtBox.Enter += new System.EventHandler(this.DefinitionIDTxtBox_Enter);
+            this.DefinitionIDTxtBox.Click += new System.EventHandler(this.DefinitionIDTxtBox_Click);
             // 
             // JSONTxtBox
             // 
@@ -72,7 +75,7 @@
             // 
             // FileNameTxtBox
             // 
-            this.FileNameTxtBox.Location = new System.Drawing.Point(84, 296);
+            this.FileNameTxtBox.Location = new System.Drawing.Point(84, 285);
             this.FileNameTxtBox.Name = "FileNameTxtBox";
             this.FileNameTxtBox.Size = new System.Drawing.Size(246, 20);
             this.FileNameTxtBox.TabIndex = 7;
@@ -83,6 +86,8 @@
             this.DefinitionKeyTxtBox.Name = "DefinitionKeyTxtBox";
             this.DefinitionKeyTxtBox.Size = new System.Drawing.Size(246, 20);
             this.DefinitionKeyTxtBox.TabIndex = 1;
+            this.DefinitionKeyTxtBox.Enter += new System.EventHandler(this.DefinitionKeyTxtBox_Enter);
+            this.DefinitionKeyTxtBox.Click += new System.EventHandler(this.DefinitionKeyTxtBox_Click);
             // 
             // DefinitionIdLbl
             // 
@@ -129,7 +134,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(81, 278);
+            this.label5.Location = new System.Drawing.Point(81, 264);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 20;
@@ -151,7 +156,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(414, 278);
+            this.label1.Location = new System.Drawing.Point(359, 267);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 13);
             this.label1.TabIndex = 14;
@@ -174,10 +179,12 @@
             0,
             0});
             this.TimesTxtBox.ValueChanged += new System.EventHandler(this.TimesTxtBox_ValueChanged);
+            this.TimesTxtBox.Enter += new System.EventHandler(this.TimesTxtBox_Enter);
+            this.TimesTxtBox.Click += new System.EventHandler(this.TimesTxtBox_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(418, 294);
+            this.button1.Location = new System.Drawing.Point(362, 283);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(86, 23);
             this.button1.TabIndex = 8;
@@ -188,8 +195,8 @@
             // FilePathLbl
             // 
             this.FilePathLbl.AutoSize = true;
-            this.FilePathLbl.Location = new System.Drawing.Point(510, 299);
-            this.FilePathLbl.MaximumSize = new System.Drawing.Size(154, 0);
+            this.FilePathLbl.Location = new System.Drawing.Point(454, 285);
+            this.FilePathLbl.MaximumSize = new System.Drawing.Size(300, 0);
             this.FilePathLbl.Name = "FilePathLbl";
             this.FilePathLbl.Size = new System.Drawing.Size(57, 13);
             this.FilePathLbl.TabIndex = 17;
@@ -197,7 +204,7 @@
             // 
             // RunProgramBtn
             // 
-            this.RunProgramBtn.Location = new System.Drawing.Point(288, 347);
+            this.RunProgramBtn.Location = new System.Drawing.Point(84, 342);
             this.RunProgramBtn.Name = "RunProgramBtn";
             this.RunProgramBtn.Size = new System.Drawing.Size(182, 29);
             this.RunProgramBtn.TabIndex = 9;
@@ -210,7 +217,7 @@
             this.SuccessLbl.AutoSize = true;
             this.SuccessLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SuccessLbl.ForeColor = System.Drawing.Color.DarkGreen;
-            this.SuccessLbl.Location = new System.Drawing.Point(487, 347);
+            this.SuccessLbl.Location = new System.Drawing.Point(283, 347);
             this.SuccessLbl.Name = "SuccessLbl";
             this.SuccessLbl.Size = new System.Drawing.Size(130, 24);
             this.SuccessLbl.TabIndex = 19;
@@ -231,7 +238,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(400, 149);
+            this.label6.Location = new System.Drawing.Point(414, 149);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(217, 13);
             this.label6.TabIndex = 22;
@@ -239,25 +246,27 @@
             // 
             // DelayInterval
             // 
-            this.DelayInterval.Location = new System.Drawing.Point(417, 165);
+            this.DelayInterval.Location = new System.Drawing.Point(417, 167);
             this.DelayInterval.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.DelayInterval.Name = "DelayInterval";
-            this.DelayInterval.Size = new System.Drawing.Size(186, 20);
+            this.DelayInterval.Size = new System.Drawing.Size(177, 20);
             this.DelayInterval.TabIndex = 4;
             this.DelayInterval.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.DelayInterval.Enter += new System.EventHandler(this.DelayInterval_Enter);
+            this.DelayInterval.Click += new System.EventHandler(this.DelayInterval_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(609, 167);
+            this.label7.Location = new System.Drawing.Point(600, 172);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 24;
@@ -267,7 +276,7 @@
             // 
             this.ProgressLbl.AutoSize = true;
             this.ProgressLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.ProgressLbl.Location = new System.Drawing.Point(496, 347);
+            this.ProgressLbl.Location = new System.Drawing.Point(283, 347);
             this.ProgressLbl.Name = "ProgressLbl";
             this.ProgressLbl.Size = new System.Drawing.Size(122, 24);
             this.ProgressLbl.TabIndex = 25;
@@ -299,7 +308,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.SuccessLbl);
             this.Controls.Add(this.RunProgramBtn);
-            this.Controls.Add(this.FilePathLbl);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.TimesTxtBox);
             this.Controls.Add(this.label1);
@@ -312,6 +320,7 @@
             this.Controls.Add(this.DefinitionKeyTxtBox);
             this.Controls.Add(this.JSONTxtBox);
             this.Controls.Add(this.DefinitionIDTxtBox);
+            this.Controls.Add(this.FilePathLbl);
             this.Name = "Form1";
             this.Text = "Camunda Testing";
             this.Load += new System.EventHandler(this.Form1_Load);

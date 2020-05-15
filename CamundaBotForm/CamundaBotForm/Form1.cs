@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using CsvHelper;
 using System.Globalization;
+using System.Windows;
 
 namespace CamundaBotForm
 {
@@ -34,6 +35,76 @@ namespace CamundaBotForm
             fbd.RootFolder = Environment.SpecialFolder.Desktop;
             if (fbd.ShowDialog() == DialogResult.OK)
                 FilePathLbl.Text = (fbd.SelectedPath);
+        }
+
+        private void DefinitionIDTxtBox_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(DefinitionIDTxtBox.Text))
+            {
+                DefinitionIDTxtBox.SelectionStart = 0;
+                DefinitionIDTxtBox.SelectionLength = DefinitionIDTxtBox.Text.Length;
+            }
+        }
+
+        private void DefinitionIDTxtBox_Enter(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(DefinitionIDTxtBox.Text))
+            {
+                DefinitionIDTxtBox.SelectionStart = 0;
+                DefinitionIDTxtBox.SelectionLength = DefinitionIDTxtBox.Text.Length;
+            }
+
+        }
+
+        private void DefinitionKeyTxtBox_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(DefinitionKeyTxtBox.Text))
+            {
+                DefinitionKeyTxtBox.SelectionStart = 0;
+                DefinitionKeyTxtBox.SelectionLength = DefinitionKeyTxtBox.Text.Length;
+            }
+        }
+
+        private void DefinitionKeyTxtBox_Enter(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(DefinitionKeyTxtBox.Text))
+            {
+                DefinitionKeyTxtBox.SelectionStart = 0;
+                DefinitionKeyTxtBox.SelectionLength = DefinitionKeyTxtBox.Text.Length;
+            }
+
+        }
+
+        private void TimesTxtBox_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TimesTxtBox.Text))
+            {
+                TimesTxtBox.Select(0, 100);
+            }
+        }
+
+        private void TimesTxtBox_Enter(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TimesTxtBox.Text))
+            {
+                TimesTxtBox.Select(0, 100);
+            }
+        }
+
+        private void DelayInterval_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(DelayInterval.Text))
+            {
+                DelayInterval.Select(0, 100);
+            }
+        }
+
+        private void DelayInterval_Enter(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(DelayInterval.Text))
+            {
+                DelayInterval.Select(0, 100);
+            }
         }
 
 
@@ -116,6 +187,8 @@ namespace CamundaBotForm
                 string message = "No connection to the host could be made. Check the URL is correct, or the host is running.";
                 string caption = "Error While Starting Process";
                 MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ProgressLbl.Text = "Test Failed...";
+                ProgressLbl.Refresh();
                 return;
             }
             catch (NullReferenceException) // There was no response from the host after connection was made.
@@ -123,6 +196,8 @@ namespace CamundaBotForm
                 string message = "No connection to the host could be made. Check the URL is correct, or the host is running.";
                 string caption = "Error While Starting Process";
                 MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ProgressLbl.Text = "Test Failed...";
+                ProgressLbl.Refresh();
                 return;
             }
             catch(RestException)
@@ -130,6 +205,8 @@ namespace CamundaBotForm
                 string message = "No matching Process Definition matching key: " + definitionKey;
                 string caption = "Error While Starting Process";
                 MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ProgressLbl.Text = "Test Failed...";
+                ProgressLbl.Refresh();
                 return;
             }
 
@@ -148,6 +225,8 @@ namespace CamundaBotForm
                 string message = "No connection to the host could be made. Check the URL is correct, or the host is running.";
                 string caption = "Error While Retrieving Activity Data";
                 MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ProgressLbl.Text = "Test Failed...";
+                ProgressLbl.Refresh();
                 return;
             }
             catch (NullReferenceException) // There was no response from the host after connection was made.
@@ -155,6 +234,8 @@ namespace CamundaBotForm
                 string message = "No data was received from the host. Check the Definition ID and Key are correct, or that the process has been started.";
                 string caption = "Error While Retrieving Activity Data";
                 MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ProgressLbl.Text = "Test Failed...";
+                ProgressLbl.Refresh();
                 return;
             }
 
@@ -180,6 +261,8 @@ namespace CamundaBotForm
                                 string message = "No data was received from the host";
                                 string caption = "Error Saving Data";
                                 MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                ProgressLbl.Text = "Test Failed...";
+                                ProgressLbl.Refresh();
                                 return;
                             }
 
@@ -190,6 +273,8 @@ namespace CamundaBotForm
                         string message = "There was an issue while creating the file.";
                         string caption = "Error Saving Data";
                         MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ProgressLbl.Text = "Test Failed...";
+                        ProgressLbl.Refresh();
                         return;
                     }
             }
@@ -198,6 +283,8 @@ namespace CamundaBotForm
                 string message = "The file path is incorrect or the file is still in use.";
                 string caption = "Error Saving Data";
                 MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ProgressLbl.Text = "Test Failed...";
+                ProgressLbl.Refresh();
                 return;
             }
 
@@ -229,5 +316,16 @@ namespace CamundaBotForm
                 JSONTxtBox.Enabled = false;
             }
         }
+
+        private void DefinitionIDTxtBox_GotMouseCapture(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(DefinitionIDTxtBox.Text))
+            {
+                DefinitionIDTxtBox.SelectionStart = 0;
+                DefinitionIDTxtBox.SelectionLength = DefinitionIDTxtBox.Text.Length;
+            }
+        }
+
+
     }
 }
